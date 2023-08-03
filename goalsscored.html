@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple goals calculator</title>
+    <style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {
+  background-image: url('soccer.jpg');
+  min-height: 100%;
+  background-size: cover;
+}
+
+h1{
+    margin: 2%;
+    text-align: center;
+}
+        fieldset {
+            width: 45%;
+            margin: auto;
+            
+            
+            
+        }
+
+        label,input {
+            margin: 10px;
+        }
+       
+    </style>
+    <script>
+        function calculate() {
+            let games, goals, array, total, average, output;
+            games = document.getElementById("games").value;
+            goals = document.getElementById("goals").value;
+            array = goals.split(",");
+            total = 0;
+
+            for (i = 0; i < array.length; i++) {
+                total = parseInt(array[i]);
+            }
+        
+        try {
+            if (games == 0) {
+                throw "Please enter a valid number of games";
+            } else if (games == "") {
+                throw "Please enter a valid number of games";
+            } else if (isNaN(games)) {
+                throw "Please enter a valid number of games";
+            }
+            average = total / games;
+            output = "The average is " + average;
+            document.getElementById("result").innerHTML = output;
+            }
+        catch (err) {
+            document.getElementById("result").innerHTML = err;
+        }
+    }
+
+    </script>
+    </head>
+
+    <body>
+        <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+             <div class="w3-display-middle">
+              <h1 class="w3-jumbo w3-animate-top">Average Goal Scored</h1>
+              <hr class="w3-border-grey" style="margin:auto;width:40%">
+              <fieldset>
+                <legend>Goals Calculator</legend>
+                <label>Enter number of games played</label>
+                <input type="text" id="games" size="3"><br>
+                <label>Enter goals, separated by commas</label>
+                <input type="text" id="goals" size="20"><br>
+                <button onclick="calculate()">
+                    Calculate average
+                </button>
+                <p id="result"></p>
+            </fieldset>
+            </div>
+            <footer>
+            <div class="w3-display-bottomleft w3-padding-large">
+              Powered by <a href="dex96.pythonanywhere.com">DEX</a>
+            </div>
+          </div>
+        </footer>
+        
+    </body>
+
+</html>
